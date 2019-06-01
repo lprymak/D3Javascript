@@ -256,6 +256,7 @@ function createBarChart(stateData, censusData) {
                 color: 'rgb(82, 81, 81)'
             }
         }
+
         trace2 = {
             x: [averages[item].average],
             y: [labelValues[item]],
@@ -269,6 +270,7 @@ function createBarChart(stateData, censusData) {
             }
         }
         data.push(trace2, trace1, trace0);
+
         if (i === 0) {
             layout[`xaxis`] = { domain: [0, d3.max([x1[0], x2[0]])], anchor: `y${0}`, showgrid: false, zeroline: false, showline: false, showticklabels: false, fixedrange: true };
             layout[`yaxis`] = { showgrid: false, zeroline: false, showline: false, tickfont: { family: 'sans-serif', size: 12 }, fixedrange: true };
@@ -335,6 +337,7 @@ function clickChange(circlesGroup, censusData) {
             clickedCircles.push(d3.select(this)._groups[0][0].__data__);
 
             createTable(clickedCircles);
+
         }
         // If one selected already
         else if (clickedCircles.length === 1) {
@@ -454,7 +457,7 @@ d3.csv("./assets/data/data.csv").then(function (censusData) {
         .attr("cx", d => xLinearScale(d[chosenXAxis]))
         .attr("cy", d => yLinearScale(d[chosenYAxis]))
         .attr("r", 16)
-        .attr('fill', '#79d2a6');
+        .attr('fill', '#e6e6e6');
 
     // Adds abbreviation text to mask - background color visible
     var textMasks = mask.selectAll("circle").select('text')
